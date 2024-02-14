@@ -1,0 +1,39 @@
+from perceptron_algorithm.Neuron import Neuron
+class Perceptron:
+    def __init__(self, list_of_neurons: list[Neuron], learning_rate=0.2, convergence_criteria=0.1):
+        self.epochs = 50
+        self.list_of_neurons = list_of_neurons
+        self.learning_rate = learning_rate
+        self.convergence_criteria = convergence_criteria
+
+    # We create a predcition list through Neuron methods that we build in Neuron class
+    def prediction(self, feature_vector: list[list[int]], list_of_neurons: list[Neuron]):
+        predictions = []
+        n = len(list_of_neurons) - 1
+        for i in range(0, n):
+            weighted_sum = list_of_neurons[i].preditciton(feature_vector=feature_vector[i])
+            activation = list_of_neurons[i].activation(z=weighted_sum)
+            predictions.append(activation)
+        return predictions
+
+    def train(self, input_data, labels, list_of_neurons: list[Neuron]):
+        numerical_labels = [0 if label == 'spam' else 1 for label in labels]
+
+        # neural network trainng
+        for i in range(0, self.epochs):
+            predicted_value = self.prediction(feature_vector=input_data, list_of_neurons=list_of_neurons)
+            for prediction, feature_vector, label in zip(predicted_value, input_data, numerical_labels):
+                error_calc = 0
+                if prediction != label:
+                    error_calc = label - prediction
+
+                for neuron in list_of_neurons:
+                    if neuron.activation(prediction):
+                        neuron.weights = [w + self.learning_rate * error_calc * x for w, x in
+                                          zip(neuron.weights, feature_vector)]
+                        neuron.bias += self.learning_rate * error_calc
+                    else:
+                        neuron.weights = [w - self.learning_rate * error_calc * x for w, x in
+                                          zip(neuron.weights, feature_vector)]
+                        neuron.bias -= self.learning_rate * error_calc
+            print("BIAS: ", neuron.bias, "WEIGHTS: ", neuron.weights, "EPOCH: ", i)
