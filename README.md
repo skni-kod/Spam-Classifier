@@ -32,7 +32,3 @@ You should also include the custom modules provided in your project directory.
 This project is available under the [MIT License](LICENSE).
 
 ---
-
-Please replace the descriptions and any custom library names with your actual project dependencies. Additionally, ensure that your project includes a license file (e.g., LICENSE) as appropriate.
-
-Feel free to customize this list and README as needed for your project.
