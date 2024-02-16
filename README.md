@@ -1,6 +1,6 @@
-## Project Dependencies
+## About
 
-This project utilizes several libraries and packages for data preprocessing, feature extraction, and building a neural network. Below is a list of dependencies along with their descriptions:
+Design of a neural network without the use of libraries (scikit - dataset division, nltk - text lemmatization) to classify spam.
 
 ## Python Libraries
 
