@@ -1,5 +1,4 @@
----
-# Project Dependencies
+## Project Dependencies
 
 This project utilizes several libraries and packages for data preprocessing, feature extraction, and building a neural network. Below is a list of dependencies along with their descriptions:
 
@@ -26,9 +25,3 @@ pip install scikit-learn
 ```
 
 You should also include the custom modules provided in your project directory.
-
-## License
-
-This project is available under the [MIT License](LICENSE).
-
----
